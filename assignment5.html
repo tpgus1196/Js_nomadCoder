@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>  
+     .body1{
+         background: rgb(255, 185, 185);
+     }
+
+     .body2{
+         background: rgb(240, 255, 185);
+     }
+
+     .body3{
+         background: rgb(185, 207, 255);
+     }
+     
+    </style>
+
+
+</head>
+<body>
+  <h1>hello!</h1>
+  
+  <script>
+    //body 이용
+      const page = document.querySelector("body");
+        
+    //resize 할때 body 색깔 변화 
+      function sizing(){
+          const innerWidth = window.innerWidth;
+        
+        if(innerWidth < 500) {
+            page.classList.toggle("body1"); //빨
+            
+        }else if(innerWidth>=500 &&innerWidth < 800) {
+            page.classList.toggle("body2"); //노
+            
+        }else {
+            page.classList.toggle("body3"); //파
+            
+      }
+
+    }
+
+      
+//listener
+      window.addEventListener("resize",sizing);
+
+
+  </script>
+
+</body>
+</html>

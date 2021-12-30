@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .hidden{
+            display:none;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <form id="login-form">
+        <input 
+            required
+            maxlength = "15"
+            type="text"
+            placeholder="What is your name?">
+        <input type="submit" value="Log In">
+    </form>
+   
+    <h1 id="gteeting" class="hidden"></h1>
+
+
+
+<script>
+    const loginForm = document.querySelector("#login-form")
+    const loginInput = loginForm.querySelector("#login-form input"); //html안에서 정밀조사 가능 
+    const greeting = document.querySelector("#greeting");
+
+    const HIDDEN_CLASSNAME = "hidden";
+      
+    
+    function onLoginSubmit(event) {
+        event.preventDefault(); //기본동작 막기
+        loginForm.classList.add(HIDDEN_CLASSNAME); //form 숨기기 (클래스네임 주기)
+        const username = loginInput.value; //유저 이름 변수 저장
+        
+        //f12 > application > localstoreage에 값 저장
+        localStorage.setItem("username", username); //저장될 아이템 이름, 값은 username 변수
+        greeting.innerText = "Hello " + username;
+        greeting.classList.remove(HIDDEN_CLASSNAME); //hidden클래스를 없애줘야 화면에 나옴
+    }
+
+
+    
+
+    loginForm.addEventListener("submit", onLoginSubmit); 
+
+    
+    
+
+</script>
+
+
+</body>
+</html>

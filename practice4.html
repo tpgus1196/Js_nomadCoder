@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="hello">
+        <h1>hello!</h1>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+    </div>
+<script>
+const h1 = document.querySelector("div.hello:first-child h1");
+
+function handleTitleClick() {
+    //컬러를 변수에 저장
+    const currentColor = h1.style.color;
+    let newColor; //empty
+
+    if(h1.style.color === "blue"){ //check equality '==='
+        // h1.style.color = "tomato"; //change the color to tomato '='
+        newColor = "tomato";
+    } else{
+        // h1.style.color = "blue";
+        newColor = "blue";
+    }
+    h1.style.color = newColor; //이거 왜하지?
+}
+
+h1.addEventListener("click", handleTitleClick);
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

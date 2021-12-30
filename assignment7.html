@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Random Number Game</h1>
+    <div>
+        <h3 class="js-title">Generate a number bettween 0 and <input type="number" id="maxNumber" min="0"> </h3> 
+    </div>
+
+    <div>
+        <form action="" id="js-guess">
+            <label for="">Guess the number:</label>
+            <input type="number" max="200" min="5"> 
+                 <!-- 여기에 max, min 왜함?? -->
+            <input type="submit" value="play!" class="play">
+                <!-- button태그 해도 되는가? -->
+        </form>
+    </div>  
+
+    <div>
+        <span id="result"></span>
+    </div>
+
+    <script>
+        const guessForm = document.querySelector("#js-guess");
+        const guessInput = guessForm.querySelector("input");
+        const result = document.querySelector("#result");
+        const maxNumber = document.querySelector("#maxNumber");
+
+        
+
+        function randomGame(event) {
+            event.preventDefault();
+            const max = maxNumber.value; //input태그지만 form태그 안거침 & 얘 위치 매우 중요...
+                                        //함수 밖에 선언하면 값 안나옴
+
+            if(guessInput.value ==="" && max === ""){ //guess.value > 정수 변환 안된 상태
+                return;
+            } //guessInput, maxnumber 모두 값 x > 함수 빠져나오기
+                //왜 &&? ||는 안되나 
+            
+            const guess = parseInt(guessInput.value,10); 
+                //정수변환 이유: input, form태그 통해 제출된 값은 문자열 형태로 저장됨
+                //,10 > 10진수
+                //위치 중요. 함수 밖에 변수선언하면 값이 안나옴(nan값 뜬다)
+                
+            const random = Math.ceil(Math.random() * max); 
+                //버림x, 올림하는 이유: max까지 수 얻기 위함
+
+            result.innerHTML =`
+            You chose: ${guess}, The machine chose: ${random}. <br>
+            <strong>${guess === random ? "You won!" : "You lost!"}</strong>
+            `;
+            console.log(randomGame);
+        }
+        guessForm.addEventListener("submit",randomGame);
+        
+
+
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Time Until Christmas Eve</h1>
+    <h2 class="clock">00d 00h 00m 00s</h2>
+
+    <script>
+        const clock = document.querySelector(".clock");
+        
+        function getChristmas(){
+            const now = new Date();
+            
+            // const xmasDay = new Date(now.getFullYear(),12,25); > 11인 이유: 0부터 1월임...
+            const xmasDay = new Date(`${new Date().getFullYear()}-12-25:00:00:00+0900`);
+
+
+            const difference = new Date(xmasDay - now);
+                //date 함수로 생성한 date 객체는 연산 가능.. 여기서 .getTime함수 쓰면 안되나
+            const secondsInMs = Math.floor(difference / 1000) ;
+            const minutesInMs = Math.floor(difference / 1000 / 60);
+            const hoursInMs = Math.floor(difference / 1000 / 60 / 60);
+            const days = Math.floor(difference / 1000 / 60 / 60 / 24);
+
+            const seconds = secondsInMs % 60; 
+                //크리스마스~현재까지 남은 시간 중 '전체 초'를 '분'단위로 나눈 나머지
+                //모듈러(%)연산 하면 나머지 값 얻을 수 있다.
+            const minutes = minutesInMs % 60;
+            const hours = hoursInMs % 24;
+          
+
+            //삼항 연산자 
+            //(남은 시간이 10보다 작을 경우 앞에 0 붙여 두자리로 나타내기)
+            const daysStr = `${days<10? `0${days}` : days}d`;
+            const hoursStr = `${hours<10? `0${hours}` : hours}h`;
+            const minutesStr = `${minutes<10? `0${minutes}` : minutes}m`;
+            const secondsStr = `${seconds<10? `0${seconds}` : seconds}s`;
+
+            // clock.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            clock.innerHTML = `${daysStr} ${hoursStr} ${minutesStr} ${secondsStr}`;
+        }
+        
+        // getChristmas() //이건 왜 하는지 모르겠다
+        setInterval(getChristmas,1000);
+
+
+    </script>
+
+
+</body>
+</html>

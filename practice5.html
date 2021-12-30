@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: beige;
+        }
+        h1 {
+            color: cornflowerblue;
+        }
+        .clicked {
+            color: tomato;
+        }
+        .sexy-font{
+            font-family:'Times New Roman', Times, serif;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    
+<div class="hello">
+    <h1 class="sexy-font">click me!</h1>
+</div>
+
+<script>
+    const h1 = document.querySelector("div.hello:first-child h1");
+
+    function handleTitleClick() {
+        // h1.className = "active"; 하면 activ클래스 속성을 h1으로 가져온다
+        // console.log(h1.className);
+
+        const clickedClass = "clicked sexy-font" //클래스명 두개
+         
+        if(h1.className === clickedClass) {
+            //클래스명 스트링 값으로 - 개발자가 임의로 정할 수 있어 오타-오류 위험이 있다.
+            //그래서 변수 설정해주는 것. >변수명(치ㅑ찯ㅇ침ㄴㄴ) 복붙하면 됨.
+            h1.className = ""; //update className to this
+        }else{
+            h1.className = clickedClass; //update className to this
+            //중간에 클래스명 바뀌면 그냥 이것도 바뀜
+        }
+    }
+
+    h1.addEventListener("click", handleTitleClick);
+
+
+
+</script>
+
+</body>
+</html>

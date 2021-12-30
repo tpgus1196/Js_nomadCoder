@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Number Game</h1>
+
+    <form action="" id="gameForm">
+        <h2>Generate a number between 0 and</h2>
+        <input type="number" min="0" class="maxNumber">
+        <h3>Guess the number:</h3>
+        <input type="number" min="0" class="guessNumber">
+        <input type="submit" value="play" class="playbutton">
+        
+    </form>
+
+    <h3 class="values"></h3>
+    <!-- 나 입력값, 기계 입력값 -->
+    
+    <h3 class="result"></h3> 
+    <!-- 짐/이김 -->
+
+    <script>
+    
+        //numberselectform에서 max숫자 불러오기
+        //그 숫자 이하, 0 이상의 숫자 중에 랜덤으로 띄우기
+        //you chose:... , the machine chose:...
+        //같으면 you won! / 다르면 you lose!
+        const gameForm = document.querySelector("#gameForm");
+        const maxNumber = gameForm.querySelector(".maxNumber");
+        const guessNumber = gameForm.querySelector(".guessNumber");
+        const playButton = gameForm.querySelector(".playButton");
+        const values = document.querySelector(".values");
+        const result = document.querySelector(".result");
+
+        const MNUMBER_KEY = "Mnumber";
+
+
+        // function maxSelect(event){ 
+        //     event.preventDefault();
+        //    const Mnumber = maxNumber.values; //값 받는다
+        //    localStorage.setItem(MNUMBER_KEY,Mnumber);
+        // } 
+    
+
+
+        function playGame(event){
+            event.preventDefault();
+
+              //랜덤숫자 불러오기
+               const machineNumber = Math.floor(Math.random()*10);
+                if(guessNumber =! machineNumber){
+                    
+                    values.innerText = `You chose: ${guessNumber}`;
+                    values.innerText = `The machine chose: ${machineNumber}`;
+                    result.innerText = "You lose"
+
+                }else if(guessNumber === machineNumber) {
+                    values.innerText = `You chose: ${guessNumber}`;
+                    values.innerText = `The machine chose: ${machineNumber}`;
+                    result.innerText = "You won!"
+                }
+                else{
+                    alert("Another number");
+                }              
+               
+             
+            
+        }
+        playButton.addEventListener("submit", playGame);
+
+
+
+
+        
+    </script>
+</body>
+</html>

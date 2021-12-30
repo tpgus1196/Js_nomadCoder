@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="login-form">
+    <input 
+        required 
+        maxlength = "15"
+        type="text" 
+        placeholder="What is your name?">
+    <button>Log in</button>
+    </div>
+
+
+
+
+<script>
+
+    const loginForm = document.getElementById("login-form")
+    const loginInput = loginForm.querySelector("input"); //html안에서 정밀조사 가능 
+    const loginButton = loginForm.querySelector("button")
+    // document.querySelector("#login-form input")도 가능
+
+    function onLoginBtnClick() {
+        const username = loginInput.value;
+        // console.dir(loginInput.value); //콘솔창에서 propery 볼 수 있음
+        // console.log("click!!!!");
+        const value = loginInput.value;
+        if(value === "") { //value값이 없으면
+            alert("{lease write your nave");
+        } else if(username.length > 15) {
+            alert("Your name is too long.")
+        }
+    }
+
+
+    loginButton.addEventListener("click", onLoginBtnClick);
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="login-form"></form>
+    <a href="http://nomadcoders.co">Go to courses</a>
+
+
+
+
+<script>
+    const loginForm = document.querySelector("#login-form")
+    const loginInput = loginForm.querySelector("#login-form input"); //html안에서 정밀조사 가능 
+    
+    const link = document.querySelector("a");
+                              
+    function onLoginSubmit(event) {
+        event.preventDefault(); 
+        console.log(loginInput.value); 
+        }
+
+
+    function handleLinkClick(event) {
+        event.preventDefault(); //막고 있어서 링크 페이지로 안넘어감
+        console.log(event) //애만해주면 mouse move 이벤트라고 뜸
+        alert("clicked!"); //확인 버튼 뜨면서 페이지 넘어가는 것 중지
+    }
+    loginForm.addEventListener("submit", onLoginSubmit); 
+    link.addEventListener("click",handleLinkClick);
+    //eventlistener함수는 직접 실행x
+    
+    
+
+</script>
+
+
+</body>
+</html>

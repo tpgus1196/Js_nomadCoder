@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2 id="clock">00:00:00</h2>
+    
+
+
+
+<script>
+    const clock = document.querySelector("h2#clock");
+
+    // clock.innerText ="lalalalal"
+
+    
+    function getClock() {
+        const date = new Date();
+        const hours = String(date.getHours()).padStart(2,"0");
+        const minutes = String(date.getMinutes()).padStart(2,"0");
+        const seconds = String(date.getSeconds()).padStart(2,"0");
+        // console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+        
+         //website load 되자마자 getClock()실행, 매초마다 다시 실행
+        clock.innerText = `${hours}:${minutes}:${seconds}`;
+        
+        
+    
+    
+    }
+
+    //ex)매 2초마다 무슨 일이 발생하게 하고 싶을때 interval 쓴다
+    //setinterval은 두 argument를 받는다
+    //argument 1. 실행하고자 하는 function
+    //argument 2. 시간
+       
+    
+    getClock(); //함수 한번 실행 (왜 하는지는 모르겟다)
+        //sayHello 함수를 매 5000ms마다 호출되도록(5초마다)
+        //getClock 함수 매 1초마다
+    setInterval(getClock,1000); //위 함수 다음 이거 실행
+
+    //string.padstart(20,"x") > xxxxxxstring으로 나옴
+    //"1".padstart(2,"0") >01(앞에 0을 달아준다)
+   
+    
+
+
+
+
+</script>
+
+
+</body>
+</html>

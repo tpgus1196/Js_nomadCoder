@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form class="hidden" id="login-form" action="">
+        <input 
+        required
+        maxlength="15"
+        type="text"
+        placeholder="What is your name?">
+    </form>
+    <h1 class="hidden" id="greeting"></h1>
+    
+    <form id="todo-form" action="">
+        <input type="text" placeholder="Write a To Do and Press Enter" required>
+    </form>
+    <ul id="todo-list"></ul>
+
+
+
+
+<script>
+    const loginForm = document.querySelector("#login-form");
+    const loginInput = document.querySelector("#login-form input")
+    const greeting = document.querySelector("#greeting")
+
+    const HIDDEN_CLASSNAME = "hidden";
+    const USERNAME_KEY = "username";
+
+    function onLoginSubmit(event){
+        event.preventDefault();
+        loginForm.classList.add(HIDDEN_CLASSNAME);
+        const username = loginInput.value;
+        localStorage.setItem(USERNAME_KEY,username);
+        paintGreetings(username);
+
+    }
+    function paintGreetings(username){
+        greeting.innerText = `Hello ${username}`;
+        greeting.classList.remove(HIDDEN_CLASSNAME);
+    }
+    const savedUsername = localStorage.getItem(USERNAME_KEY);
+    if(savedUsername === null){
+        loginForm.classList.remove(HIDDEN_CLASSNAME);
+        loginInput.addEventListener("submit",onLoginSubmit);
+    } else{
+        paintGreetings(savedUsername);
+    }
+
+    const toDoForm = document.getElementById("todo-form");
+    const toDoList = document.getElementById("todo-list");
+
+
+
+</script>
+
+</body>
+</html>

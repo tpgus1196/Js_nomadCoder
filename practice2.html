@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="hello">
+        <h1>Hello!</h1>
+    </div>
+
+    <script>
+        const title = document.querySelector(".hello");
+       
+        const superEventHandler = {
+
+        handleMouseClick: function() {
+            title.style.color = "blue";
+            title.innerText = "You was a right click!";
+        },
+
+        handleMouseEnter: function() {
+            title.style.color = "red";
+            title.innerText = "Mouse is here!"
+        },
+
+        handleMouseLeave: function() {
+            title.style.color = "green";
+            title.innerText = "Mouse is gone!"
+        },
+
+        handleResize: function() {
+            title.style.color = "purple";
+            title.innerText = "You just resized!"
+        }
+        };
+        
+        title.addEventListener("contextmenu",superEventHandler.handleMouseClick);
+        title.addEventListener("mouseenter",superEventHandler.handleMouseEnter);
+        title.addEventListener("mouseleave",superEventHandler.handleMouseLeave);
+        window.addEventListener("resize",superEventHandler.handleResize);
+    
+    
+    
+    </script>
+
+
+
+
+
+</body>
+</html>

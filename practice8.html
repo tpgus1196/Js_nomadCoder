@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="login-form">
+    <input 
+        required 
+        maxlength = "15"
+        type="text" 
+        placeholder="What is your name?">
+    <button>Log in</button>
+    </div>
+
+
+
+
+<script>
+    const loginForm = document.querySelector("#login-form")
+    const loginInput = loginForm.querySelector("#login-form input"); //html안에서 정밀조사 가능 
+    
+                           //┌argument     
+    function onLoginSubmit(event) {
+        event.preventDefault(); //호출시 브라우저의 기본 동작 막아줌
+        // console.log(event); //argument공간 제공 > 방금 일어난 event에 대한 정보를 지닌 argument를 js가 채워넣음
+        console.log(loginInput.value); //이렇게 빼내주면 새로고침 시행 안됨
+
+        // const username = loginInput.value;
+        // console.log(username); //자동 submit 되어 사라지는 username값
+        }
+    //form submit 할 때 입력값 받아내기
+    //새로고침이 기본 동작(submit) >막아내기
+
+
+    loginForm.addEventListener("submit", onLoginSubmit); 
+   // onLoginSubmit()  > 뒤에 괄호) 보자마자 function 바로 실행됨
+        //이벤트리스너는 바로 실행x
+    
+
+
+</script>
+
+
+</body>
+</html>

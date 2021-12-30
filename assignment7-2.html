@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Random Number Game</h1>
+    <div id="js-title">
+        <h3>generate a number between 0 and <input type="number" min="0"></h3>
+    </div>
+    
+    <form id="js-guess">
+        <label for="">Guess the number: </label>
+        <input type="number" min="0" max="200"></h3> 
+        <button>Play!</button>
+    </form>
+
+    <div id="js-result">
+        <span id="result"></span>
+    </div>
+
+    <script>
+        const maxNumber = document.querySelector("#js-title input");
+        const guessForm = document.querySelector("#js-guess");
+        const guessInput = guessForm.querySelector("input");
+        
+        
+
+        function gameStart(event){
+            event.preventDefault();
+            
+            const guess = parseInt(guessInput.value,10);
+
+            if(maxNumber.value === "" && guess ===""){
+                return;
+            }
+
+            const max = maxNumber.value;
+            const randomNumber = Math.ceil(Math.random()*max);
+            const result = document.getElementById("result");
+            console.log(result.innerHTML); //오류 검사
+            
+            result.innerHTML = `
+                You chose: ${guess}, the machine chose: ${randomNumber}
+                <br>
+                <strong>${randomNumber === guess ? "You won!" : "You lost!"}</stron>
+            `;
+        }
+
+        guessForm.addEventListener("submit",gameStart);
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

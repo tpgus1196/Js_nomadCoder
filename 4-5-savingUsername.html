@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <form id="login-form">
+        <!-- input의 유효성 검사 작동하기 위해 form태그 사용 -->
+        <input  required
+                maxlength="15"
+                type="text"
+                placeholder="What is your name?"
+                >
+        <button>Log In</button>
+    </form>
+    
+    <h1 class="hidden" id="greeting"></h1>
+    <!-- username 변수로 저장, 이름은 h1안에 넣어주기 
+            >id명 greeting 추가-->
+
+
+<script>
+
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+
+const HIDDEN_CLASSNAME = "hidden";
+//클래스명 넣고 뺄 때 오타 방지용 변수 선언
+//문자 변수는 대문자로 선언(통상)
+
+
+function onLoginSubmit(event) {
+    event.preventDefault(); 
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value; //이름정보 저장
+    localStorage.setItem("username", username); 
+    //localstoreage에 저장될 아이템 이름(key값) 저장, 값(변수)인 username
+        //이러면 새로고침 시 다시 로그인폼 떠도 username은 저장된 상태이다
+        //저장 후 새로고침해도 로그인 폼 안보이게 할 수 있다
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+   
+    
+}
+//local storage 브라우저에 공짜로 뭔가 기억할 수 있게 해주는 기능(API)
+//username 기억.(누구인지) > 흔히 API존재 이유.(브라우저에 기억)
+loginForm.addEventListener("submit",onLoginSubmit);
+
+
+</script>
+
+</body>
+</html>

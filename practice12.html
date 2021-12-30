@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="login-form">
+        <input 
+            required
+            maxlength = "15"
+            type="text"
+            placeholder="What is your name?">
+        <input type="submit" value="Log In">
+        
+    </form>
+
+<script>
+    const loginForm = document.querySelector("#login-form");
+    const loginInput = document.querySelector("#login-form input");
+    const greeting = document.querySelector("#greeting")
+
+    const HIDDEN_CLASSNAME = "hidden";
+    const USERNAME_KEY = "username";
+
+    function onLoginSubmit(event) { //폼이 제출되면
+        event.preventDefault();
+        loginForm.classList.add(HIDDEN_CLASSNAME);
+        const username = loginInput.value; //input으로부터 유저정보 받음
+        localStorage.setItem(USERNAME_KEY, username);
+        painGreetings(username); //input에서 받은 user 가진 paingreeting 호출
+    }
+
+//함수 호출 위치에 따라 유저정보는 다른 곳에서 온다
+function painGreetings(username){
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+
+}
+
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if(savedUsername === null){ //이름 저장된 게 없으면 다시 폼으로
+    //show the form
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit",onLoginSubmit);
+}else{
+    //show the greetings
+    painGreetings(savedUsername); //local storage에 유저정보 있으면 거기서 받아 인자로 넣어줌
+}
+
+</script>
+
+</body>
+</html>

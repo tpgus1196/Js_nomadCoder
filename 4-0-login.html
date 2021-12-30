@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="login-form">
+        <!-- input의 유효성 검사 작동하기 위해 form태그 사용 -->
+        <input  required
+                maxlength="15"
+                type="text"
+                placeholder="What is your name?"
+                >
+        <button>Log In</button>
+    </form>
+        
+    
+    <h1 class="hidden" ></h1>
+
+
+<script>
+
+const loginForm = document.querySelector("#login-form");
+const loginInput = loginForm.querySelector("input");
+const loginButton = loginForm.querySelector("button");
+
+function onLoginBtnClick() {
+    // console.log("click!!!");
+    // console.dir(loginInput);
+    // console.log("hello",loginInput.value); //console.dir(loginInput) > property(value)확인 가능
+    const username = loginInput.value;
+    // if(username === ""){
+    //     alert("Please write your name.");
+    // }else if(username.length > 15){ //글자수 15개 이상 메세지
+    //     alert("Your name is too long.");
+    // }
+    console.log(username); //form태그 안 input 버튼 누르면 자동 submit 작동함
+}
+
+loginForm.addEventListener("click",onLoginBtnClick);
+
+
+
+</script>
+
+</body>
+</html>

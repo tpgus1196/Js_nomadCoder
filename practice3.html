@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="hello">
+        <h1>Click me!</h1>
+
+    </div>
+    <h1></h1>
+
+    <script>
+
+        const h1 = document.querySelector("div.hello:first-child h1");
+
+        function handleTitleClick() {
+            h1.style.color = "blue";
+            h1.innerText = "You was a right click!"
+        }
+
+        function handleMouseEnter() {
+            h1.style.color = "red";
+            h1.innerText = "Mouse is here!"
+        }
+
+        function handleMouseLeave() {
+            h1.style.color = "green";
+            h1.innerText = "Mouse is gone!"
+        }
+
+        function handleResize() {
+            document.body.style.backgroundColor = "tomato";
+            // document에서 body 호출, 스타일 적용
+        }
+
+        function handleWindowCopy() {
+            alert("copier!");
+        }
+
+        function handleWindowOffline() {
+            alert("sos no wifi")
+        }
+        function handleWindowOnline() {
+            alert("All Goooood")
+        }
+
+        h1.onclick = handleTitleClick;
+        h1.onmouseover = handleMouseEnter;
+        h1.addEventListener("mouseleave", handleMouseLeave);
+        
+        window.addEventListener("resize", handleResize);
+            // eventlistener가 더 좋은 이유 - removeEventListener이거 쓸 수 있어서 편리
+        window.addEventListener("copy",handleWindowCopy);
+        window.addEventListener("offline",handleWindowOffline);
+        window.addEventListener("online",handleWindowOnline);
+
+
+    </script>
+</body>
+</html>

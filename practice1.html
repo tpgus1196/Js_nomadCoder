@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Momentum App</title>
+</head>
+<body>
+    <div class="hello">
+        <h1>Click me!</h1>
+
+    </div>
+    <h1></h1>
+
+    <script>
+
+        const title = document.querySelector("div.hello:first-child h1");
+
+        function handleTitleClick() {
+            title.style.color = "blue";
+            title.innerText = "You was a right click!"
+        }
+
+        function handleMouseEnter() {
+            title.style.color = "red";
+            title.innerText = "Mouse is here!"
+        }
+
+        function handleMouseLeave() {
+            title.style.color = "green";
+            title.innerText = "Mouse is gone!"
+        }
+
+        function handleResize() {
+            title.style.color = "yellow";
+            title.innerText = "You just resized!"
+        }
+
+        title.addEventListener("contextmenu", handleTitleClick);
+        title.addEventListener("mouseenter", handleMouseEnter);
+        title.addEventListener("mouseleave", handleMouseLeave);
+        window.addEventListener("resize", handleResize);
+
+
+
+    </script>
+</body>
+</html>
